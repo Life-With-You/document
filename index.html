@@ -56,16 +56,14 @@
 </style>
 
 <body>
-
     <div class="container-fluid box">
-
         <button onclick="getdata()" class="btn btn-warning btn-ding ">加载更多</button>
     </div>
 </body>
 <script>
     var typenum = 1;
     var pagenum = 1;
-
+    var img;
     //想法如果图片加载失败，那么就把那个段子剔除，遍历到它的父亲，并把它的父亲删掉；
     // https://www.apiopen.top/satinApi?type=1&page=1
     function getdata() {
@@ -73,36 +71,27 @@
                 type: typenum,
                 page: pagenum
             },
-
             function (data, textStatus, jqXHR) {
                 // console.log(data.data);
-                var img;
+                
                 $.each(data.data, function (index, Element) {
+                    
                     img = Element.cdn_img
                     $('.box')
                         //头像和昵称、发表时间
-                        .append('<div class="row"><div class="col-xs-2"><img src="' + Element.profile_image +
-                            '"class="img-min "></div>' +
-                            '<div class="font col-xs-8"><span>' + Element.name + '</span><br><i>' + Element
-                            .passtime + '</i></div></div>' +
+                        .append('<div class="row"><div class="col-xs-2"><img src="' + Element.profile_image +'"class="img-min "></div>' +
+                            '<div class="font col-xs-8"><span>' + Element.name + '</span><br><i>' + Element.passtime + '</i></div></div>' +
                             //文本
-                            '<div class="row"><div class="col-xs-12"><p class="contentInner">' + Element.text +
-                            '</p></div></div>' +
+                            '<div class="row"><div class="col-xs-12"><p class="contentInner">' + Element.text +'</p></div></div>' +
                             //图片
                             '<div class="row"><div class="shibai col-xs-12"><img src="' + img +
                             '" class="img-dig"  alt="图片加载失败"></div></div><br>');
-
                 });
             }
         );
         typenum++;
         pagenum++;
     }
-    // function nothing() {
-    //     $('.img-dig').after("<span>" + "图片加载失败！" + "</span>")
-    //     // $(this).html(x+"加点")；
-    //   }
-
     getdata();
 </script>
 
