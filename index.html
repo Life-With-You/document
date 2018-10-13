@@ -10,12 +10,13 @@
     <!-- Bootstrap css样式 -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../bank/dist/css/bootstrap.css">
+    <script src=" ../bank/dist/js/bootstrap.js"></script>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="../bank/jQ/jquery.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src=" ../bank/dist/js/bootstrap.js"></script>
+
 </head>
 <style>
     .box {
@@ -49,7 +50,6 @@
         top: 5px;
         left: 70%;
     }
-
     .font {
         display: inline-block;
     }
@@ -58,6 +58,13 @@
 <body>
     <div class="container-fluid box">
         <button onclick="getdata()" class="btn btn-warning btn-ding ">加载更多</button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <img src="" alt="" class="img-dig">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -73,19 +80,23 @@
             },
             function (data, textStatus, jqXHR) {
                 // console.log(data.data);
-                
+
                 $.each(data.data, function (index, Element) {
-                    
+
                     img = Element.cdn_img
                     $('.box')
                         //头像和昵称、发表时间
-                        .append('<div class="row"><div class="col-xs-2"><img src="' + Element.profile_image +'"class="img-min "></div>' +
-                            '<div class="font col-xs-8"><span>' + Element.name + '</span><br><i>' + Element.passtime + '</i></div></div>' +
+                        .append('<div class="row"><div class="col-xs-2"><img src="' + Element.profile_image +
+                            '"class="img-min "></div>' +
+                            '<div class="font col-xs-8"><span>' + Element.name + '</span><br><i>' + Element
+                            .passtime + '</i></div></div>' +
                             //文本
-                            '<div class="row"><div class="col-xs-12"><p class="contentInner">' + Element.text +'</p></div></div>' +
+                            '<div class="row"><div class="col-xs-12"><p class="contentInner">' + Element.text +
+                            '</p></div></div>' +
                             //图片
                             '<div class="row"><div class="shibai col-xs-12"><img src="' + img +
-                            '" class="img-dig"  alt="图片加载失败"></div></div><br>');
+                            '" class="img-dig" data-toggle="modal" data-target="#myModal" alt="图片加载失败"></div></div><br>'
+                        );
                 });
             }
         );
@@ -93,6 +104,16 @@
         pagenum++;
     }
     getdata();
+    var button;
+
+$('#exampleModal').on('show.bs.modal', function (event) {
+  button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.attr('src') // Extract info from data-* attributes
+  console.log(recipient)
+
+  var modal = $(this);
+  modal.find('img').attr('src', recipient);
+})
 </script>
 
 </html>

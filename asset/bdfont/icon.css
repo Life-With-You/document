@@ -1,0 +1,53 @@
+/**
+ * @file icon.css
+ */
+
+@font-face {
+    font-family: "bdfont";
+    src: url("bdfont.eot"); /* IE9 */
+    src: url("bdfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("bdfont.woff") format("woff"), /* chrome、firefox */
+    url("bdfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("bdfont.svg#uxfonteditor") format("svg"); /* iOS 4.1- */
+}
+
+
+.icon {
+    font-family: "bdfont" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-casual-clothes-shirt-sportswear-tshirt-tee:before {
+  content: "\e001";
+}
+
+.icon-flames-shape-star-sun-sunrays:before {
+  content: "\e002";
+}
+
+.icon-truck17:before {
+  content: "\e003";
+}
+
+.icon-bleeding-blood-donate-donation-injuries-injury-red-wound:before {
+  content: "\e004";
+}
+
+.icon-fitness-outdoor-swim-swimmer-swimming:before {
+  content: "\e005";
+}
+
+.icon-1_air-blow-breeze-weather-windy:before {
+  content: "\e006";
+}
+
+
+

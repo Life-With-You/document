@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jQ/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form action="" method="GET">
+        <input type="text" placeholder="name" id="name">
+        <input type="text" placeholder="url" id="url">
+        <input type="submit" value="添加记录" id="submit">
+    </form>
+    <form action="" method="GET">
+        <input type="text" placeholder="name" id="getname">
+        <input type="submit" value="查找网址" id="getsubmit">
+    </form>
+    <form action="" method="GET">
+        <input type="submit" value="删除网址" id="delsubmit">
+    </form>
+    <p id="chu"></p>
+    <script>
+        var tmpArray = '';
+        // console.log($('#name')[0].val)
+        if (!localStorage.sites) {
+            localStorage.sites = JSON.stringify([]);
+        }
+        $('#submit').click(function (e) {
+            // console.log($('#name').val());
+
+            e.preventDefault();
+            var newItem = {
+                sitename: $('#name').val(),
+                sitenurl: $('#url').val()
+            }
+            // console.log(jQuery.makeArray(newItem))
+            // var tmp = JSON.parse(localStorage.getItem('sites'))
+            // tmpArray = jQuery.makeArray(tmpArray);
+            tmpArray = JSON.parse(localStorage.getItem('sites'))
+            tmpArray.push(newItem)
+            localStorage.setItem('sites', JSON.stringify(tmpArray));
+        })
+        $("#getsubmit").click(function (e) {
+            e.preventDefault();
+            var x = $('#getname').val();
+            var tmpArray = JSON.parse(localStorage.getItem('sites'));
+            var nameval = '';
+            // console.log(tmpArray);
+
+            for (let i = 0; i < tmpArray.length; i++) {
+                // console.log(tmpArray[i]);
+                // console.log(tmpArray[i].sitename);
+
+                if (tmpArray[i].sitename === x) {
+                    nameval += tmpArray[i].sitenurl;
+                    // console.log(nameval)
+                    $("#chu").html("网址为" + nameval);
+                }
+            }
+        });
+        $("#delsubmit").click(function (e) {
+            
+            e.preventDefault();
+            // localStorage.getItem('sites')
+            localStorage.removeItem('sites')
+            // var x = $('#delname').val();
+            // var tmpArray = JSON.parse(localStorage.getItem('sites'));
+            // var nameval = '';
+            // // console.log(tmpArray);
+
+            // for (let i = 0; i < tmpArray.length; i++) {
+            //     // console.log(tmpArray[i]);
+            //     // console.log(tmpArray[i].sitename);
+                
+            //     if (tmpArray[i].sitename === x) {
+            //         // nameval += tmpArray[i].sitenurl;
+            //         localStorage.removeItem(tmpArray[i].sitenurl);
+            //         // console.log(nameval)
+            //         // $("#chu").html("删除的网址为" + nameval);
+            //     }
+            // }
+        });
+    </script>
+</body>
+
+</html>

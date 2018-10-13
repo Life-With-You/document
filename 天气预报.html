@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>天气API</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/weather.css">
+</head>
+
+<body>
+    <form action="" method="get">
+        <input id="city" type="text" placeholder="请输入城市">
+        <input id="find" type="button" value="查找"> &nbsp;&nbsp;&nbsp;
+        <!--<i>默认城市为广州</i>-->
+    </form>
+    <div class="box">
+        <div class="inner">
+            <div class="cityDiv"></div>
+            <div class="condition"></div>
+        </div>
+        <div class="shishi">
+            <div class="constantly "></div>
+        </div>
+        <hr>
+        <div class="future"></div>
+        <hr>
+        <div class="tips">
+            <ul class="list-unstyled ">
+                <li class="tips_yundong"></li>
+                <li class="tips_xiche"></li>
+                <li class="tips_kongqi"></li>
+                <li class="tips_ziwaixian"></li>
+                <li class="tips_chuanyi"></li>
+                <li class="tips_xuetang"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/condition.js"></script>
+</body>
+</html>

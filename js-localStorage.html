@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        localStorage
+        localStorage.name
+        localStorage.url = ""
+
+        localStorage.removeItem('url')
+
+
+        // 保存数据：localStorage.setItem(key,value);
+        // 读取数据：localStorage.getItem(key);
+        // 删除单个数据：localStorage.removeItem(key);
+        // 删除所有数据：localStorage.clear();
+        // 得到某个索引的key：localStorage.key(index);
+    </script> -->
+
+    <form class="set" action="" method="get">
+        <input type="text" placeholder="name">
+        <input type="text" placeholder="url">
+        <input type="submit" value="新增记录">
+    </form>
+
+    <hr>
+    <form class="get" action="" method="get">
+        <input type="text" placeholder="name">
+        <input type="submit" value="查找网站">
+    </form>
+    <p id="demo"></p>
+
+
+    <script>
+        var nameDiv = document.querySelector('.set input[placeholder="name"]')
+        var urlDiv = document.querySelector('.set input[placeholder="url"]')
+        var subDiv = document.querySelector('.set input[type="submit"]')
+        // localStorage.setItem('sites',[]);
+
+        var getDiv = document.querySelector('.get')
+        var getnameDiv = document.querySelector('.get input[placeholder="name"]')
+        var getsubDiv = document.querySelector('.get input[type="submit"]')
+        //最初就判断localStorage.sites是不是非undefined
+        if (!localStorage.sites) {
+            localStorage.sites = JSON.stringify([]);
+        }
+
+        subDiv.onclick = function (event) {
+            // 阻止默认事件
+            event.preventDefault();
+            // console.log(nameDiv.value)
+            // console.log(urlDiv.value)
+            // localStorage.sitename = nameDiv.value
+            // localStorage.siteurl = urlDiv.value
+            // 添加内容为数组
+            var newItem = {
+                sitename: nameDiv.value,
+                siteurl: urlDiv.value
+            }
+            // console.log(newItem);
+            // 添加临时数组，并把里面的数组转换为对象ojd
+            var tmp = JSON.parse(localStorage.getItem('sites'))
+            // 添加到数组里面
+            tmp.push(newItem)
+            // console.log(sites);
+            // 把对象ojd转换为数组，并保存数组
+            localStorage.setItem('sites', JSON.stringify(tmp));
+            // [{sitename:xxx,siteurl:0000}, {sitename:xxx,siteurl:0000} 理想样式
+        }
+        // 读取数据
+        getDiv.onsubmit = function (e) {
+            e.preventDefault();
+            // 获取输入框的元素
+            var x = getnameDiv.value;
+            // 获取数组并将其转换为对象ojd，保存在临时对象内
+            var tmp = JSON.parse(localStorage.getItem('sites'))
+            console.log(tmp);
+            // 定义一个空的数组
+            var v = ""
+            // 循环出localstorage，里面的对象
+            for (var i = 0; i < tmp.length; i++) {
+                // 判断对象sitename等于输入框内的元素
+                if (tmp[i].sitename === x) {
+                    // console.log(tmp[i].siteurl);
+                    // 加后等于
+                    v += tmp[i].siteurl
+                    // 输出
+                    document.getElementById('demo').innerText = "网址为：" + v;
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

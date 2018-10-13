@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="content"></div>
+    <!-- <img src="" alt=""> -->
+    <script>
+        // https://m2.qiushibaike.com/article/newlist?new=1&longitude=113.433749&latitude=23.162099
+        $.get("http://localhost:8080/", function (data) {
+            // console.log(JSON.parse(data));
+            var json = JSON.parse(data);
+            $.each(json.items, function (i, v) {
+                // $('.content').append('<li>' + v.content + '</li>' + '<img src="' + v.user.medium + '">');
+                $('.content').append(
+                    `
+                    <li>${v.content}</li>
+                    <img src="${v.user.medium}" alt="">
+                `);
+            //    console.log(v.user.medium);
+                
+            });
+        });
+    </script>
+</body>
+
+</html>

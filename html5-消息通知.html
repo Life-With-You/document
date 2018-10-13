@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="show" type="button">通知消息</button>
+    <button id="tian" type="button">多条消息</button>
+</body>
+<script>
+    var show = document.getElementById('show');
+    show.addEventListener('click', function () {
+        var comve = 0;
+        // 固定的
+        Notification.requestPermission(function (permission) {
+            if (permission === 'granted') {
+                // 提示头
+                n = new Notification("您有一条新的消息", {
+                    // 提示消息如何弹出 ，auto默认值，其他两值暂时无效
+                    dir: "auto",
+                    // 语言
+                    lang: "zh-CN",
+                    // 可算是提示消息的id
+                    tag: "iiiiii",
+                    // 图片精灵
+                    icon: "./asset/images/banner.jpg",
+                    // 提示消息的内容
+                    body: "xx微博已被收藏！"
+                })
+                console.log(n.tag);
+                // console.log(tag);
+            }
+        })
+    })
+    window.addEventListener('click', function () {
+        // At first, let's check if we have permission for notification
+        // If not, let's ask for it
+        if (window.Notification && Notification.permission !== "granted") {
+            Notification.requestPermission(function (status) {
+                if (Notification.permission !== status) {
+                    Notification.permission = status;
+                }
+            });
+        }
+
+        var button = document.getElementsByTagName('button')[0];
+
+        button.addEventListener('click', function () {
+            // If the user agreed to get notified
+            // Let's try to send ten notifications
+            if (window.Notification && Notification.permission === "granted") {
+                var i = 0;
+                // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+                var interval = window.setInterval(function () {
+                    // Thanks to the tag, we should only see the "Hi! 9" notification 
+                    var n = new Notification("Hi! " + i, {
+                        tag: 'soManyNotification'
+                    });
+                    if (i++ == 9) {
+                        window.clearInterval(interval);
+                    }
+                }, 200);
+            }
+
+            // If the user hasn't told if he wants to be notified or not
+            // Note: because of Chrome, we are not sure the permission property
+            // is set, therefore it's unsafe to check for the "default" value.
+            else if (window.Notification && Notification.permission !== "denied") {
+                Notification.requestPermission(function (status) {
+                    // If the user said okay
+                    if (status === "granted") {
+                        var i = 0;
+                        // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+                        var interval = window.setInterval(function () {
+                            // Thanks to the tag, we should only see the "Hi! 9" notification 
+                            var n = new Notification("Hi! " + i, {
+                                tag: 'soManyNotification'
+                            });
+                            if (i++ == 9) {
+                                window.clearInterval(interval);
+                            }
+                        }, 200);
+                    }
+
+                    // Otherwise, we can fallback to a regular modal alert
+                    else {
+                        alert("Hi!");
+                    }
+                });
+            }
+
+            // If the user refuses to get notified
+            else {
+                // We can fallback to a regular modal alert
+                alert("Hi!");
+            }
+        });
+    });
+</script>
+
+</html>

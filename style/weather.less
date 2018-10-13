@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'iconfont';
+    src: url('../asset/bdfont/bdfont.ttf/'); // src: url('../asset/bdfont.ttf') format('truetype');
+    
+}
+html body {
+    width: 100%;
+}
+
+.box {
+    // width: 100%;
+    // height: 100%;
+    // background: red;
+    margin: 0 auto;
+    overflow: hidden;
+    color: white; // text-align: center;
+    padding: 15px;
+    background-image: url('../asset/images/banner.jpg');
+    .inner {
+        text-align: center;
+    }
+    .cityDiv>.cityP {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .cityDiv {
+        position: relative;
+    }
+    .cityDiv>.cityBH,
+    .cityDiv>.cityGX {
+        right: 0;
+        font-size: 12px;
+        position: absolute;
+    }
+    .cityGX {
+        top: 18px;
+    }
+    .condition {
+        .tem,
+        .temFu {
+            font-size: 30px;
+        }
+        .wind {
+            font-size: 12px;
+        }
+        .level {
+            margin-top: 5px;
+            display: inline-block;
+            border: 2px solid white;
+            border-radius: 15px;
+            width: 60px;
+        }
+        i {
+            margin-left: 5px
+        }
+    }
+    .shishi {
+        overflow-x: auto;
+        overflow: scroll;
+        text-align: center;
+        .constantly {
+            // overflow-y: auto;
+            margin-top: 10px; // width: 410px;
+            position: relative;
+            height: 56px; // border: 1px solid #000000;
+            .constantly-data {
+                // position: absolute;
+                padding: 0 10px;
+                text-align: center;
+                font-size: 12px; // border: 1px solid blue;
+                display: inline-block;
+            }
+        }
+    }
+    .future {
+        div {
+            .day {
+                margin-left: 0;
+                width: 100px;
+                text-align: right;
+            }
+            a {
+                display: inline-block;
+                width: 75px;
+                margin-left: 35px;
+            }
+        }
+    }
+    .tips {
+        li {
+            width: 110px;
+            height: 20px;
+            float: left;
+            border: 1px solid wheat;
+        }
+        [class="tips_"] {
+            font-family: 'iconfont';
+            font-size: 60px;
+        }
+        .tips_chuanyi::before {
+            content: '\E001'
+        }
+    }
+}
+

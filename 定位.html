@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <H1>物理定位</H1>
+</body>
+<script>
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(showPosition)
+    }
+    function showPosition(position) {
+        console.log("纬度: " + position.coords.latitude);
+        console.log("经度: " + position.coords.longitude);
+        
+    }
+    getLocation();
+</script>
+</html>
