@@ -1,0 +1,17 @@
+.list-group-item.row {
+    margin: 0 0;
+}
+
+.panel-footer span::after {
+    content: '/';
+    padding-left: 1rem;
+}
+
+.panel-footer span:last-child::after {
+    content: '';
+    padding-left: 1rem;
+}
+
+.finished h5 {
+    color: red;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <%= value.title %>
+    </h1>
+   <table>
+
+        <% students.forEach((element) => { %>
+            <%- include('./student.ejs', {student: element})  %> 
+        <% }) %>
+        
+    </table>
+</body>
+
+</html>
