@@ -29,7 +29,7 @@
         <form action="/" method="post">
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="item" placeholder="">
+                    <input type="text" class="form-control" name="item" placeholder="添加内容">
                     <span class="input-group-btn">
                         <button class="btn btn-primary" type="submit">添加数据</button>
                     </span>
@@ -38,7 +38,7 @@
         </form>
 
         <div class="panel panel-success">
-            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-heading">信息</div>
             <div class="panel-body">
                 <ul class="list-group">
                     <% items.forEach(element => { %>
@@ -48,9 +48,9 @@
             </div>
 
             <div class="panel-footer">
-                <span>共<strong>3</strong>项</span>
-                <span>已完成<strong>0</strong>项</span>
-                <span>未完成<strong>3</strong>项</span>
+                <span>共<strong><%= items.length %></strong>项</span>
+                <span>已完成<strong></strong>项</span>
+                <span>未完成<strong></strong>项</span>
             </div>
         </div>
     </div>

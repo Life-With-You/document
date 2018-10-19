@@ -2,7 +2,7 @@
 <li class="list-group-item row finished">
     <h5 class="col-xs-8"><%= item.content %></h5>
     <div class="btn-group pull-right" role="group">
-        <button type="button" class="btn btn-success glyphicon glyphicon-ok"></button>
+        <a href="/togger/<%= item._id %>" class="btn btn-success glyphicon glyphicon-ok"></a>
         <button type="button" class="btn btn-default glyphicon glyphicon-edit" data-toggle="modal"
             data-target="#myModal" data-itemId="<%= item._id %>" disabled></button>
         <a href="/delete/<%= item._id %>" type="button" class="btn btn-default glyphicon glyphicon-trash"></a>
@@ -13,7 +13,7 @@
 <li class="list-group-item row">
     <h5 class="col-xs-8"><%= item.content %></h5>
     <div class="btn-group pull-right" role="group">
-        <button type="button" class="btn btn-danger glyphicon glyphicon-ok"></button>
+        <a href="/togger/<%= item._id %>" class="btn btn-danger glyphicon glyphicon-ok"></a>
         <button type="button" class="btn btn-default glyphicon glyphicon-edit" data-toggle="modal"
             data-target="#myModal" data-itemId="<%= item._id %>"></button>
         <a href="/delete/<%= item._id %>" type="button" class="btn btn-default glyphicon glyphicon-trash"></a>

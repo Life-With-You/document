@@ -15,19 +15,23 @@ app.use(express.static("public"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-
 // 使用bodyParser 解析POST请求
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
 // 使用首页路由
 app.use("/", indexRouter);
+
 // 使用delete路由
 app.use("/delete", deleteRouter);
+
 // 使用 edit路由
 app.use("/edit", editRouter);
+
 // 使用 togger路由
 app.use("/togger", toggerRouter);
+
 app.listen(8080, () => {
     console.log("App listening on port 8080!");
 });
